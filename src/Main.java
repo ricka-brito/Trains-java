@@ -2,6 +2,15 @@ import java.time.LocalTime;
 import java.util.Scanner;
 
 public class Main {
+    /**
+     * Function that simulate a train collision
+     *
+     * @param posA The position of train A (0 -> 10000) in KM
+     * @param posB The position of train B (0 -> 10000) in KM
+     * @param velA The velocity of train A (0 -> 300) in KM/h
+     * @param velB The velocity of train B (0 -> -300) in KM/h
+     * @return The time left till the collision
+     **/
     public static float colisionInstant(float posA, float posB, float velA, float velB) throws Exception {
 
 
@@ -27,11 +36,24 @@ public class Main {
             return t;
         }
     }
-
+    /**
+     * Function that calculate the collision position
+     *
+     * @param pos0 The initial position of the train (0 -> 10000) in KM
+     * @param V The velocity of the train (0 -> 300) in KM/h
+     * @param t The time left till the collision
+     * @return The position that the collision will happen
+     **/
     public static float collisionPos(float pos0, float V, float t){
         return pos0 + V * t;
     }
 
+    /**
+     * Function that instantiate a LocalTime object with 17:00:00 value and add the time
+     *
+     * @param t The time left till the collision
+     * @return The LocalTime object plus the time left to the collision
+     **/
     public static LocalTime PositionTime(float t){
         LocalTime start = LocalTime.of(17, 0, 0);
         start = start.plusSeconds((long) (t*60*60));
